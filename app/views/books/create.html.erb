@@ -1,0 +1,5 @@
+# app/views/books/index.html.erb
+<%= form_tag "/books/create", method: "post" do %>
+  <input type="text" name="title" />
+  <input type="submit" value="Ajouter le livre" />
+<% end %>

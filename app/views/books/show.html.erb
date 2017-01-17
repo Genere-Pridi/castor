@@ -2,6 +2,7 @@
 
 <%= form_tag "/books/#{@book.id}", method: "patch" do %>
 <input type="text" name="title" value="<%= @book.title %>" />
+<p><%= @book.errors[:title].first %></p>
 <input type="submit" value="Modifier le livre" />
 <% end %>
 
@@ -10,13 +11,3 @@
 <% end %>
 
 <p><a href="/books">Retourner à l’index</a></p>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    var $but = $('#but1');
-    if($but.onclick() == true){
-        alert('Voulez-vous réellement supprimer cet élément ?'+$but.val());
-    }
-
-  });
-</script>

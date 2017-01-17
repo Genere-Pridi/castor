@@ -4,11 +4,24 @@
 
 <% @books.each do |book| %>
 
-  <p><a href="/books/<%= book.id %>"><%=book.id%>. <%= book.title %></a></p>
+  <p>
+    <a href="/books/<%= book.id %>">
+      <% if book.category %>
+        <%=book.id%>. <%= book.title %> (<%= book.category.name %>)
+      <% else %>
+        <%=book.id%>. <%= book.title %>
+      <% end %>
+    </a>
+  </p>
 
 <% end %>
 
 <%= form_tag "/books", method: "post" do %>
-  <input type="text" name="title" />
+  Titre :<input type="text" name="title" /><br/>
+  Catégorie :<select name="category_id" >
+    <% @categories.each do |category| %>
+      <option value="<%= category.id %>"><%= category.name %></option>
+    <% end %>
+  </select><br/>
   <input type="submit" value="Ajouter le livre" />
 <% end %>

@@ -1,4 +1,3 @@
-# app/views/books/show.html.erb
 <h1><%= @book.title %></h1>
 
 <%= form_tag "/books/#{@book.id}", method: "patch" do %>
@@ -6,4 +5,18 @@
 <input type="submit" value="Modifier le livre" />
 <% end %>
 
+<%= form_tag "/books/#{@book.id}", method: "delete" do %>
+  <input id="but1" type="submit" value="Supprimer">
+<% end %>
+
 <p><a href="/books">Retourner à l’index</a></p>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    var $but = $('#but1');
+    if($but.onclick() == true){
+        alert('Voulez-vous réellement supprimer cet élément ?'+$but.val());
+    }
+
+  });
+</script>
